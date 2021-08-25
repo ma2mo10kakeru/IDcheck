@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charest="utf-8">
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<title>患者データ</title>
+	
+   <script type="text/javascript">
+   function getFunc(drugdata){
+   $("div").html("患者氏名：" + drugdata[1].name + "<br>" + 
+		 "ID：" + drugdata[1].id + "<br>" + 
+		 drugdata[1].drugname[0] + "：" + drugdata[1].drugdose[0] + "<br>" + 
+		 drugdata[1].drugname[1] + "：" + drugdata[1].drugdose[1] + "<br>" + 
+		 drugdata[1].drugname[2] + "：" + drugdata[1].drugdose[2] + "<br>" + 
+		 "投与時刻：" + drugdata[1].time);
+   };
+   $(function () {
+	   $("#getJSON").click(function(){
+					$.getJSON("drugdata.json", getFunc);
+				});
+			});
+	</script>
+	
+   <style type="text/css">
+		<!--
+			div{
+				width:300px;
+				height:300px;
+				margin:10px;
+				border:solid 1px #666;
+			}
+		-->
+		</style>
+	
+</head>
+	 
+<script type="text/javascript">
+$(function () {
+	 $("#kakunin").click(function(){
+					$.getJSON("drugdata.json", kakunin1);
+				});
+});
+function kakunin1(drugdata){
+	var D1,D2,D3;
+	D1 = drugdata[1].drugdose[0];
+	D2 = drugdata[1].drugdose[1];
+	D3 = drugdata[1].drugdose[2];
+    if( document.form1.drugdose1.value==D1 && document.form1.drugdose2.value==D2 && document.form1.drugdose3.value==D3 ){
+alert("正しく入力できています");
+    }else{
+alert("入力が間違っています");
+    }
+}
+</script>
+
+<body>
+ <input type="button" value="読み込む" id="getJSON">
+   <div></div>
+	<form name="form1">
+	薬剤の用量を上から順に入力<br>
+	<label>くすり1⃣：<input type="text" id="drugdose1" placeholder="半角で入力してください" inputmode="numeric" pattern="\d*"></label><br>
+	<label>くすり2⃣：<input type="text" id="drugdose2" placeholder="半角で入力してください" inputmode="numeric" pattern="\d*"></label><br>
+	<label>くすり3⃣：<input type="text" id="drugdose3" placeholder="半角で入力してください" inputmode="numeric" pattern="\d*"></label><br>
+	<input type="button" value="確認する" id="kakunin">
+	</form>
+</body>
+</html>
