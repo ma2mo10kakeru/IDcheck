@@ -41,11 +41,9 @@ $(function () {
 				});
 });
 function kakunin1(drugdata){
-	var D1,D2,D3;
-	D1 = drugdata[1].drugdose[0];
-	D2 = drugdata[1].drugdose[1];
-	D3 = drugdata[1].drugdose[2];
-    if( document.form1.drugdose1.value==D1 && document.form1.drugdose2.value==D2 && document.form1.drugdose3.value==D3 ){
+	var ID1;
+	ID1 = drugdata[0].patientID;
+    if( document.form1.patientID.value==ID1){
 alert("正しく入力できています");
     }else{
 alert("入力が間違っています");
@@ -58,9 +56,7 @@ alert("入力が間違っています");
    <div></div>
 	<form name="form1">
 	薬剤の用量を上から順に入力<br>
-	<label>くすり1⃣：<input type="text" id="drugdose1" placeholder="半角で入力してください" inputmode="numeric" pattern="\d*"></label><br>
-	<label>くすり2⃣：<input type="text" id="drugdose2" placeholder="半角で入力してください" inputmode="numeric" pattern="\d*"></label><br>
-	<label>くすり3⃣：<input type="text" id="drugdose3" placeholder="半角で入力してください" inputmode="numeric" pattern="\d*"></label><br>
+	<label>ID：<input type="text" id="ID1" placeholder="半角で入力してください" inputmode="numeric" pattern="\d*"></label><br>
 	<input type="button" value="確認する" id="kakunin">
 	</form>
 </body>
